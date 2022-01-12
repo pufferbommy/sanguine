@@ -28,7 +28,7 @@ const Card = ({ title, imgUrl, soundUrl, defaultVolume, imageFix }) => {
       <div
         onClick={() => !isOverSlider && setIsPlaying(!isPlaying)}
         name="player"
-        className={`relative overflow-hidden group cursor-pointer select-none rounded-2xl w-auto h-36 md:h-40 lg:h-48 shadow-xl dark:shadow-none`}
+        className={`relative overflow-hidden group cursor-pointer select-none rounded-2xl w-auto h-36 md:h-40 lg:h-48 shadow-xl transition-shadow hover:shadow-2xl dark:shadow-none`}
       >
         <h1 className="absolute text-shadow-xl z-10 text-white text-lg md:text-2xl top-2 left-2">
           {title}

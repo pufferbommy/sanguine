@@ -31,14 +31,9 @@ import Container from './Container'
 const Main = () => {
   return (
     <>
-      <div className="my-3">
-        <h1 className="mx-4 text-sm px-2 py-0.5 rounded text-zinc-900 dark:text-zinc-300 text-center">
-          I will healing you with my sounds.
-        </h1>
-      </div>
       <Container
         classNameLists={
-          'grid place-items-center gap-4 grid-cols-3 md:grid-cols-4 lg:grid-cols-5'
+          'grid place-items-center my-8 gap-4 grid-cols-3 md:grid-cols-4 lg:grid-cols-5'
         }
       >
         <Fade bottom distance={'25%'}>
