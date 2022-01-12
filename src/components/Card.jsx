@@ -5,7 +5,9 @@ import { Audio } from 'react-loader-spinner'
 const Card = ({ title, imgUrl, soundUrl, defaultVolume, imageFix }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [soundVolume, setSoundVolume] = useState(defaultVolume || 0.5)
+  const [isOverSlider, setIsOverSlider] = useState(false)
   const soundPlayer = useRef()
+  const sliderRef = useRef()
   useEffect(() => {
     if (isPlaying) {
       soundPlayer.current.audioEl.current.play()
@@ -24,9 +26,9 @@ const Card = ({ title, imgUrl, soundUrl, defaultVolume, imageFix }) => {
         volume={Number(soundVolume)}
       />
       <div
-        onClick={() => setIsPlaying(!isPlaying)}
+        onClick={() => !isOverSlider && setIsPlaying(!isPlaying)}
         name="player"
-        className="relative overflow-hidden group cursor-pointer select-none rounded-2xl w-auto h-36 md:h-40 lg:h-48 shadow-xl dark:shadow-none"
+        className={`relative overflow-hidden group cursor-pointer select-none rounded-2xl w-auto h-36 md:h-40 lg:h-48 shadow-xl dark:shadow-none`}
       >
         <h1 className="absolute text-shadow-xl z-10 text-white text-lg md:text-2xl top-2 left-2">
           {title}
@@ -45,13 +47,16 @@ const Card = ({ title, imgUrl, soundUrl, defaultVolume, imageFix }) => {
               <input
                 className="w-28 lg:w-auto"
                 value={soundVolume}
-                onChange={(e) => setSoundVolume(e.target.value)}
+                ref={sliderRef}
+                onMouseOut={() => setIsOverSlider(false)}
+                onMouseOver={() => setIsOverSlider(true)}
+                onChange={(e) => {
+                  setSoundVolume(e.target.value)
+                }}
                 type="range"
                 min={0}
                 step={0.01}
                 max={1}
-                name=""
-                id=""
               />
             </div>
             <div className="absolute -bottom-4 z-10 right-4">
