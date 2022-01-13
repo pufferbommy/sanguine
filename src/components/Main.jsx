@@ -33,7 +33,7 @@ const Main = () => {
     <>
       <Container
         classNameLists={
-          'grid place-items-center my-8 gap-4 grid-cols-3 md:grid-cols-4 lg:grid-cols-5'
+          'grid place-items-center gap-5 grid-cols-3 md:grid-cols-4 lg:grid-cols-5'
         }
       >
         <Fade bottom distance={'25%'}>

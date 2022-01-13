@@ -12,7 +12,9 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="bg-transparent px-4 lg:px-0 shadow transition border-b border-transparent dark:border-b dark:border-b-gray-800 duration-200 py-4">
+    <nav
+      className={`bg-transparent px-4 lg:px-0 shadow border-b border-white duration-300 transition dark:border-b-gray-800 dark:border-b py-4`}
+    >
       <div className="flex max-w-6xl mx-auto justify-between text-2xl text-pink-500">
         <span>Sanguine</span>
         <span className="cursor-pointer select-none" onClick={toggleTheme}>

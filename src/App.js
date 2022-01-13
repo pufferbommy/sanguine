@@ -9,12 +9,14 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import NavBar from './components/NavBar'
 import Main from './components/Main'
 import Footer from './components/Footer'
+import RecommendBar from './components/RecommendBar'
 
 const App = () => {
   return (
     <>
       <ThemeProvider>
         <NavBar />
+        <RecommendBar />
         <Main />
         <Footer />
       </ThemeProvider>
