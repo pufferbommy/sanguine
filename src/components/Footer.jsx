@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import Container from './Container'
+import { ThemeContext } from '../contexts/ThemeContext.js'
 
 const Footer = () => {
+  const { theme } = useContext(ThemeContext)
   return (
     <Container>
-      <footer className="fixed dark:text-gray-400 text-zinc-900 bottom-0 p-2 bg-white dark:bg-zinc-900 transition duration-200 dark:border-t-gray-800 left-0 right-0 w-full border-t  shadow text-center">
+      <footer
+        className={`fixed ${
+          theme === 'dark'
+            ? 'text-gray-400 bg-zinc-900 border-t-gray-800'
+            : 'text-zinc-900 bg-white'
+        }  bottom-0 p-2 transition duration-200 border-t left-0 right-0 w-full shadow text-center`}
+      >
         <p>
           Made by{' '}
           <a
