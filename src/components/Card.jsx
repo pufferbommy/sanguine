@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 import { Audio } from 'react-loader-spinner'
 
-const Card = ({ title, imgUrl, soundUrl, defaultVolume, imageFix }) => {
+const Card = ({ title, imgUrl, soundUrl, defaultVolume }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [soundVolume, setSoundVolume] = useState(defaultVolume || 0.5)
   const [isOverSlider, setIsOverSlider] = useState(false)
@@ -29,14 +29,14 @@ const Card = ({ title, imgUrl, soundUrl, defaultVolume, imageFix }) => {
         onClick={() => !isOverSlider && setIsPlaying(!isPlaying)}
         name="player"
         className={`${
-          isPlaying ? 'border-pink-400' : 'border-transparent'
-        } relative border-2 transition-all overflow-hidden group cursor-pointer select-none rounded-2xl w-auto h-36 md:h-40 lg:h-48 shadow-xl hover:shadow-2xl dark:shadow-none`}
+          isPlaying ? 'border-pink-300' : 'border-transparent'
+        } relative border-2 transition-all overflow-hidden group cursor-pointer select-none rounded-2xl w-full h-36 md:h-40 lg:h-48 shadow-xl hover:shadow-2xl dark:shadow-none`}
       >
         <h1 className="absolute text-shadow-xl z-10 text-white text-lg md:text-2xl top-2 left-2">
           {title}
         </h1>
         <img
-          className={`rounded-2xl ${imageFix ? '' : 'h-full'} ${
+          className={`rounded-2xl h-full ${
             isPlaying && 'scale-110'
           } group-hover:scale-110 w-full transition object-cover object-center`}
           draggable={false}

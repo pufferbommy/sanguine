@@ -12,12 +12,12 @@ const Footer = () => {
           theme === 'dark'
             ? 'text-gray-400 bg-zinc-900 border-t-gray-800'
             : 'text-zinc-900 bg-white'
-        }  bottom-0 p-2 transition duration-200 border-t left-0 right-0 w-full shadow text-center`}
+        } select-none bottom-0 p-2 transition duration-200 border-t left-0 right-0 w-full shadow text-center`}
       >
         <p>
           Made by{' '}
           <a
-            className="underline underline-offset-2 text-pink-500"
+            className="underline underline-offset-2 text-pink-500 hover:text-pink-400 transition-color duration-300"
             href="https://twitter.com/pufferbommy"
             target={'_blank'}
             rel="noreferrer"

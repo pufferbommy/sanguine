@@ -18,7 +18,9 @@ const NavBar = () => {
       }`}
     >
       <div className="flex max-w-6xl mx-auto justify-between text-2xl text-pink-500">
-        <span>Sanguine</span>
+        <span className="select-none cursor-pointer hover:text-pink-400 transition-color duration-300">
+          Sanguine
+        </span>
         <span className="cursor-pointer select-none" onClick={toggleTheme}>
           {theme === 'dark' ? '☀️' : '🌙'}
         </span>

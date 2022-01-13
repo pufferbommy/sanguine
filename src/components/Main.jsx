@@ -42,7 +42,6 @@ const Main = () => {
             soundUrl={breathSound}
             imgUrl={breathImage}
             defaultVolume={0.1}
-            imageFix={true}
           />
         </Fade>
         <Fade bottom distance={'25%'}>
