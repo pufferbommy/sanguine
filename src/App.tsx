@@ -1,4 +1,5 @@
 import Header from './components/Header'
+import Sounds from './components/Sounds'
 import TodayQuote from './components/TodayQuote'
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <Header />
       <TodayQuote />
+      <Sounds />
     </>
   )
 }

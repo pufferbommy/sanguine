@@ -17,7 +17,7 @@ function TodayQuote() {
   return (
     <Box>
       <Container mt={4}>
-        <Heading size="lg" mb={2} as="h1">
+        <Heading size="lg" mb={2} as="h2">
           TDQ
         </Heading>
         {quote ? (
