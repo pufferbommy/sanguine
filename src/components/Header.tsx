@@ -1,5 +1,5 @@
 import { Box, Container, Heading, IconButton } from '@chakra-ui/react'
-import { MoonIcon, SunIcon } from '@chakra-ui/icons'
+import { MoonIcon } from '@chakra-ui/icons'
 
 function Header() {
   return (

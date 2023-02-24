@@ -38,7 +38,7 @@ function Sound({ cover, name, src }: SoundProps) {
     if (audioRef.current) {
       audioRef.current.volume = volume
     }
-  }, [volume])
+  }, [volume, isPlaying])
 
   return (
     <Box
