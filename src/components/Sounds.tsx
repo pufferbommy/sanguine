@@ -1,8 +1,6 @@
-import { Container, Heading, Grid, GridItem } from '@chakra-ui/react'
+import { Container, Heading, SimpleGrid } from '@chakra-ui/react'
+import { sounds } from '../constants/sounds'
 import Sound from './Sound'
-
-import snowSound from '../assets/snow.mp3'
-import snowImg from '../assets/snow.jpg'
 
 function Sounds() {
   return (
@@ -10,13 +8,11 @@ function Sounds() {
       <Heading size="lg" mb={2} as="h2">
         Sounds
       </Heading>
-      <Grid templateColumns="repeat(3, 1fr)" gap={4}>
-        {Array.from({ length: 6 }, (_, i) => (
-          <GridItem key={i}>
-            <Sound name="Snow" cover={snowImg} src={snowSound} />
-          </GridItem>
+      <SimpleGrid columns={[2, null, 3]} gap={4}>
+        {sounds.map(({ name, cover, src }) => (
+          <Sound key={name} name={name} cover={cover} src={src} />
         ))}
-      </Grid>
+      </SimpleGrid>
     </Container>
   )
 }

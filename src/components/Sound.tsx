@@ -47,10 +47,6 @@ function Sound({ cover, name, src }: SoundProps) {
     })
   }
 
-  function togglePlay() {
-    setIsPlaying((prev) => !prev)
-  }
-
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = volume
@@ -58,30 +54,35 @@ function Sound({ cover, name, src }: SoundProps) {
   }, [volume])
 
   return (
-    <>
-      <Box cursor="pointer" onClick={togglePlay} pos="relative">
-        <Heading
-          pointerEvents="none"
-          pos="absolute"
-          left={2}
-          top={2}
-          color="white"
-          size="sm"
-          as="h3"
-        >
-          {name}
-        </Heading>
-        <Image rounded="2xl" src={cover} alt={name} />
-        {isPlaying && (
-          <>
-            <Box right={2} bottom={2} pos="absolute">
-              Playing
-            </Box>
-            <audio ref={audioRef} autoPlay loop src={src} />
-          </>
-        )}
-      </Box>
-      <Flex mt={2} gap={4} visibility={isPlaying ? 'visible' : 'hidden'}>
+    <Box
+      rounded="2xl"
+      overflow="hidden"
+      shadow={isPlaying ? 'base' : 'none'}
+      h="full"
+      cursor="pointer"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          setIsPlaying((prev) => !prev)
+        }
+      }}
+      pos="relative"
+    >
+      <Heading pointerEvents="none" pos="absolute" left={2} top={2} color="white" size="sm" as="h3">
+        {name}
+      </Heading>
+      <Image userSelect="none" pointerEvents="none" src={cover} alt={name} />
+      <Flex
+        bgColor="white"
+        pos="absolute"
+        bottom={2}
+        left={2}
+        right={2}
+        p={2}
+        shadow="base"
+        rounded="2xl"
+        gap={4}
+        visibility={isPlaying ? 'visible' : 'hidden'}
+      >
         <IconButton
           size="xs"
           onClick={decreaseVolume}
@@ -120,7 +121,8 @@ function Sound({ cover, name, src }: SoundProps) {
           icon={<ChevronRightIcon />}
         />
       </Flex>
-    </>
+      {isPlaying && <audio ref={audioRef} autoPlay loop src={src} />}
+    </Box>
   )
 }
 export default Sound
