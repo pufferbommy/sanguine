@@ -25,26 +25,13 @@ function Sound({ cover, name, src }: SoundProps) {
   const [showTooltip, setShowTooltip] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
 
-  function decreaseVolume() {
-    setVolume((prevVolume) => {
-      const newVolume = prevVolume - 0.1
-      if (newVolume < 0) {
-        alert('Can not decrease anymore!!!')
-        return prevVolume
-      }
-      return newVolume
-    })
+  const toggleTooltipEventsProps = {
+    onMouseEnter: () => setShowTooltip(true),
+    onMouseLeave: () => setShowTooltip(false),
   }
 
-  function increaseVolume() {
-    setVolume((prevVolume) => {
-      const newVolume = prevVolume + 0.1
-      if (newVolume > 1) {
-        alert('Can not increase anymore!!!')
-        return prevVolume
-      }
-      return newVolume
-    })
+  function adjustVolume(amount: number) {
+    setVolume((prevVolume) => (prevVolume * 10 + amount * 10) / 10)
   }
 
   useEffect(() => {
@@ -84,10 +71,13 @@ function Sound({ cover, name, src }: SoundProps) {
         visibility={isPlaying ? 'visible' : 'hidden'}
       >
         <IconButton
+          isDisabled={volume <= 0}
           size="xs"
-          onClick={decreaseVolume}
+          onClick={() => adjustVolume(-0.1)}
           aria-label="decrease sound volume"
           icon={<ChevronLeftIcon />}
+          onMouseEnter={() => setShowTooltip(true)}
+          onMouseLeave={() => setShowTooltip(false)}
         />
         <Slider
           min={0}
@@ -97,8 +87,7 @@ function Sound({ cover, name, src }: SoundProps) {
           defaultValue={volume}
           colorScheme="pink"
           onChange={(newValue) => setVolume(newValue)}
-          onMouseEnter={() => setShowTooltip(true)}
-          onMouseLeave={() => setShowTooltip(false)}
+          {...toggleTooltipEventsProps}
         >
           <SliderTrack>
             <SliderFilledTrack />
@@ -109,16 +98,18 @@ function Sound({ cover, name, src }: SoundProps) {
             color="white"
             placement="top"
             isOpen={showTooltip}
-            label={`${Math.round(volume * 100)}%`}
+            label={Math.round(volume * 100) + '%'}
           >
             <SliderThumb />
           </Tooltip>
         </Slider>
         <IconButton
+          isDisabled={volume >= 1}
           size="xs"
-          onClick={increaseVolume}
+          onClick={() => adjustVolume(+0.1)}
           aria-label="increase sound volume"
           icon={<ChevronRightIcon />}
+          {...toggleTooltipEventsProps}
         />
       </Flex>
       {isPlaying && <audio ref={audioRef} autoPlay loop src={src} />}
