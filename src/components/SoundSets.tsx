@@ -1,13 +1,23 @@
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Button, IconButton, ButtonGroup } from '@chakra-ui/react'
+import { SmallCloseIcon } from '@chakra-ui/icons'
 
 type SoundSetProps = {
   selectSoundSet: (soundIndexs: number[]) => void
+  stopAllCurrentSounds: () => void
 }
 
-function SoundSets({ selectSoundSet }: SoundSetProps) {
+function SoundSets({ selectSoundSet, stopAllCurrentSounds }: SoundSetProps) {
   return (
     <div>
       <ButtonGroup size="xs" spacing="2">
+        <Button
+          rightIcon={<SmallCloseIcon />}
+          aria-label="play river sound and waterfall sound"
+          onClick={stopAllCurrentSounds}
+          colorScheme="red"
+        >
+          Clear
+        </Button>
         <Button
           aria-label="play river sound and waterfall sound"
           onClick={() => selectSoundSet([3, 5])}
