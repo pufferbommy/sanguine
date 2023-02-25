@@ -11,7 +11,7 @@ import campfireImg from '../assets/campfire.jpg'
 import waterfallSound from '../assets/waterfall.mp3'
 import waterfallImg from '../assets/waterfall.jpg'
 
-export const sounds = [
+export const soundInfos = [
   {
     name: 'Snow',
     cover: snowImg,

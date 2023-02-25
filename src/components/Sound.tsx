@@ -17,11 +17,12 @@ type SoundProps = {
   cover: string
   name: string
   src: string
+  isPlaying: boolean
+  togglePlay: () => void
 }
 
-function Sound({ cover, name, src }: SoundProps) {
+function Sound({ cover, name, src, isPlaying, togglePlay }: SoundProps) {
   const [volume, setVolume] = useState(0.5)
-  const [isPlaying, setIsPlaying] = useState(false)
   const [showTooltip, setShowTooltip] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
 
@@ -42,15 +43,13 @@ function Sound({ cover, name, src }: SoundProps) {
 
   return (
     <Box
-      rounded="2xl"
+      rounded="xl"
       overflow="hidden"
       shadow={isPlaying ? 'base' : 'none'}
       h="full"
       cursor="pointer"
       onClick={(e) => {
-        if (e.target === e.currentTarget) {
-          setIsPlaying((prev) => !prev)
-        }
+        if (e.target === e.currentTarget) togglePlay()
       }}
       pos="relative"
     >

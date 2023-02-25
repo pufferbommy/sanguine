@@ -1,24 +1,22 @@
-import { Box, Container, Heading, Code, Skeleton } from '@chakra-ui/react'
+import { Container, Heading, Code, Skeleton } from '@chakra-ui/react'
 import { useTodayQuote } from '../hooks/useTodayQuote'
 
 function TodayQuote() {
   const todayQuote = useTodayQuote()
 
   return (
-    <Box>
-      <Container mt={4}>
-        <Heading size="lg" mb={2} as="h2">
-          Today Quote
-        </Heading>
-        {todayQuote ? (
-          <Code p={4} rounded="2xl">
-            {todayQuote}
-          </Code>
-        ) : (
-          <Skeleton height={20} rounded="2xl" />
-        )}
-      </Container>
-    </Box>
+    <Container mt={8}>
+      <Heading size="md" mb={4} as="h2">
+        Today Quote
+      </Heading>
+      {!todayQuote ? (
+        <Skeleton height={20} rounded="xl" />
+      ) : (
+        <Code p={4} display="block" rounded="xl">
+          {todayQuote}
+        </Code>
+      )}
+    </Container>
   )
 }
 export default TodayQuote
