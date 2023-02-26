@@ -3,7 +3,7 @@ import { MoonIcon } from '@chakra-ui/icons'
 
 function Header() {
   return (
-    <Box borderBottom="1px" py={4}>
+    <Box as="header" py={4}>
       <Container display="flex" justifyContent="space-between" alignItems="center">
         <Heading as="h1">
           Sanguine

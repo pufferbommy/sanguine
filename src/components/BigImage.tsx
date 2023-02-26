@@ -5,11 +5,11 @@ function BigImage() {
   const bigImageUrl = useBigImage()
 
   return (
-    <Box>
+    <Box as="section">
       {!bigImageUrl ? (
-        <Skeleton height={340} />
+        <Skeleton rounded="xl" height="60" />
       ) : (
-        <Image h={340} w="full" objectFit="cover" src={bigImageUrl} />
+        <Image rounded="xl" h="60" w="full" objectFit="cover" src={bigImageUrl} />
       )}
     </Box>
   )

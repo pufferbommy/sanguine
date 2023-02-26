@@ -1,4 +1,4 @@
-import { Container, Flex, Heading, SimpleGrid } from '@chakra-ui/react'
+import { Box, Flex, Heading, SimpleGrid } from '@chakra-ui/react'
 import { soundInfos } from '../constants/soundInfos'
 import Sound from './Sound'
 import SoundSets from './SoundSets'
@@ -30,7 +30,7 @@ function Sounds() {
   }
 
   return (
-    <Container mt={4}>
+    <Box as="section">
       <Flex mb={4} justifyContent="space-between" alignItems="center">
         <Heading size="md" as="h2">
           Sounds
@@ -49,7 +49,7 @@ function Sounds() {
           />
         ))}
       </SimpleGrid>
-    </Container>
+    </Box>
   )
 }
 export default Sounds

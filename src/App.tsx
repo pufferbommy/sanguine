@@ -1,3 +1,4 @@
+import { Container } from '@chakra-ui/react'
 import BigImage from './components/BigImage'
 import Header from './components/Header'
 import Sounds from './components/Sounds'
@@ -7,9 +8,11 @@ function App() {
   return (
     <>
       <Header />
-      <BigImage />
-      <TodayQuote />
-      <Sounds />
+      <Container display="flex" flexDir="column" mt={3} gap={6} as="main">
+        <BigImage />
+        <TodayQuote />
+        <Sounds />
+      </Container>
     </>
   )
 }
