@@ -1,7 +1,8 @@
-import { Box, Container, Heading, IconButton } from '@chakra-ui/react'
-import { MoonIcon } from '@chakra-ui/icons'
+import { Box, Container, Heading, IconButton, useColorMode } from '@chakra-ui/react'
+import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 
 function Header() {
+  const { colorMode, toggleColorMode } = useColorMode()
   return (
     <Box as="header" py={4}>
       <Container display="flex" justifyContent="space-between" alignItems="center">
@@ -15,7 +16,7 @@ function Header() {
               left: 0,
               content: '""',
               width: '100%',
-              bgColor: 'black',
+              bgColor: colorMode === 'dark' ? 'white' : 'black',
               height: '4px',
             }}
             as="span"
@@ -23,7 +24,11 @@ function Header() {
             . .
           </Box>
         </Heading>
-        <IconButton aria-label="moon" icon={<MoonIcon />} />
+        <IconButton
+          onClick={toggleColorMode}
+          aria-label="moon"
+          icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
+        />
       </Container>
     </Box>
   )

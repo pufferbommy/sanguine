@@ -9,6 +9,7 @@ import {
   IconButton,
   Flex,
   Tooltip,
+  useColorMode,
 } from '@chakra-ui/react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { useEffect, useRef, useState } from 'react'
@@ -22,6 +23,7 @@ type SoundProps = {
 }
 
 function Sound({ cover, name, src, isPlaying, togglePlay }: SoundProps) {
+  const { colorMode } = useColorMode()
   const [volume, setVolume] = useState(0.5)
   const [showTooltip, setShowTooltip] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
@@ -58,7 +60,7 @@ function Sound({ cover, name, src, isPlaying, togglePlay }: SoundProps) {
       </Heading>
       <Image userSelect="none" pointerEvents="none" src={cover} alt={name} />
       <Flex
-        bgColor="white"
+        bgColor={colorMode === 'dark' ? 'gray' : 'white'}
         pos="absolute"
         bottom={2}
         left={2}
@@ -70,13 +72,13 @@ function Sound({ cover, name, src, isPlaying, togglePlay }: SoundProps) {
         visibility={isPlaying ? 'visible' : 'hidden'}
       >
         <IconButton
+          colorScheme={colorMode === 'dark' ? 'pink' : undefined}
           isDisabled={volume <= 0}
           size="xs"
           onClick={() => adjustVolume(-0.1)}
           aria-label="decrease sound volume"
           icon={<ChevronLeftIcon />}
-          onMouseEnter={() => setShowTooltip(true)}
-          onMouseLeave={() => setShowTooltip(false)}
+          {...toggleTooltipEventsProps}
         />
         <Slider
           min={0}
@@ -103,6 +105,7 @@ function Sound({ cover, name, src, isPlaying, togglePlay }: SoundProps) {
           </Tooltip>
         </Slider>
         <IconButton
+          colorScheme={colorMode === 'dark' ? 'pink' : undefined}
           isDisabled={volume >= 1}
           size="xs"
           onClick={() => adjustVolume(+0.1)}
