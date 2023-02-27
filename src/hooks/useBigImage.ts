@@ -3,28 +3,17 @@ import { API_RANDOM_BIG_IMAGE } from '../constants/apiEndpoints'
 
 function useBigImage() {
   const called = useRef(false)
-  const [bigImage, setBigImage] = useState<any>({})
+  const [bigImage, setBigImage] = useState('')
 
   useEffect(() => {
     async function fetchBigImage() {
       try {
         if (called.current) return
-        const headers = new Headers()
-        headers.append('Authorization', 'Client-ID ' + import.meta.env.VITE_UNSPLASH_API_ACCESS_KEY)
-        const response = await fetch(
-          API_RANDOM_BIG_IMAGE +
-            '?' +
-            new URLSearchParams({
-              orientation: 'landscape',
-              query: 'flowers',
-            }),
-          { headers }
-        )
+        const response = await fetch(API_RANDOM_BIG_IMAGE)
         if (!response.ok) {
           throw new Error('Network response was not ok')
         }
-        const data = await response.json()
-        setBigImage(data)
+        setBigImage(response.url)
       } catch (error) {
         console.error(error)
       }
