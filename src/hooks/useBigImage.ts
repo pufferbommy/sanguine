@@ -11,7 +11,15 @@ function useBigImage() {
         if (called.current) return
         const headers = new Headers()
         headers.append('Authorization', 'Client-ID ' + import.meta.env.VITE_UNSPLASH_API_ACCESS_KEY)
-        const response = await fetch(API_RANDOM_BIG_IMAGE, { headers })
+        const response = await fetch(
+          API_RANDOM_BIG_IMAGE +
+            '?' +
+            new URLSearchParams({
+              orientation: 'landscape',
+              query: 'flowers',
+            }),
+          { headers }
+        )
         if (!response.ok) {
           throw new Error('Network response was not ok')
         }
