@@ -1,8 +1,9 @@
 import { Container } from '@chakra-ui/react'
-import BigImage from './components/BigImage'
 import Header from './components/Header'
-import Sounds from './components/Sounds'
+import BigImage from './components/BigImage'
 import TodayQuote from './components/TodayQuote'
+import Sounds from './components/Sounds'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <TodayQuote />
         <Sounds />
       </Container>
+      <Footer />
     </>
   )
 }
